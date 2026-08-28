@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xy3sj1stpw87" path="res://assets/models/ship/rocket_sidesA.glb" id="4_pgyqx"]
 [ext_resource type="PackedScene" uid="uid://up14u5pyhvdk" path="res://assets/models/ship/rocket_finsA.glb" id="5_r4cio"]
 [ext_resource type="PackedScene" uid="uid://ca5v6inh21fa8" path="res://assets/models/ship/rocket_topA.glb" id="6_ejef3"]
+[ext_resource type="PackedScene" uid="uid://ck5mvnxhj43v1" path="res://scenes/thrust/thrust.tscn" id="8_wrqyj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ijv05"]
 height = 3.4069824
@@ -40,3 +41,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.1977003, -1.5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=465203968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7132022, 0.008268833)
 shape = SubResource("CylinderShape3D_ijv05")
+
+[node name="Thrust" parent="." unique_id=1658840384 instance=ExtResource("8_wrqyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+
+[node name="ThrustL" parent="." unique_id=1166799384 instance=ExtResource("8_wrqyj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7, 0.1, 0)
+
+[node name="ThrustR" parent="." unique_id=93737171 instance=ExtResource("8_wrqyj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.7, 0.1, 0)
