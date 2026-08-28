@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://58ud584hxi64"]
+
+[ext_resource type="PackedScene" uid="uid://dqc3pcwcyvkt7" path="res://assets/models/landing_pad/template-floor-detail-a.glb" id="1_2tm7v"]
+[ext_resource type="PackedScene" uid="uid://bumm5b46tuvk" path="res://assets/models/landing_pad/template-floor.glb" id="1_rl6s6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt0vh"]
+albedo_color = Color(0.35686275, 0.39215687, 0.5019608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ijv05"]
+material = SubResource("StandardMaterial3D_vt0vh")
+size = Vector3(16, 0.25, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rl6s6"]
+size = Vector3(16, 0.25, 16)
+
+[node name="LandingPad" type="Node3D" unique_id=1243908510]
+
+[node name="Tiles" type="Node3D" parent="." unique_id=905255088]
+
+[node name="template-floor2" parent="Tiles" unique_id=1102757538 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="template-floor3" parent="Tiles" unique_id=354350610 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="template-floor4" parent="Tiles" unique_id=1141982509 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="template-floor5" parent="Tiles" unique_id=848755718 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="template-floor6" parent="Tiles" unique_id=583505040 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="template-floor7" parent="Tiles" unique_id=957400921 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="template-floor8" parent="Tiles" unique_id=2029650106 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="template-floor9" parent="Tiles" unique_id=1977301333 instance=ExtResource("1_rl6s6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="template-floor-detail-a2" parent="Tiles" unique_id=113877505 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+
+[node name="template-floor-detail-a3" parent="Tiles" unique_id=1581401282 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="template-floor-detail-a4" parent="Tiles" unique_id=1472963919 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+
+[node name="template-floor-detail-a5" parent="Tiles" unique_id=382256056 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="template-floor-detail-a6" parent="Tiles" unique_id=517728994 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="template-floor-detail-a7" parent="Tiles" unique_id=2055685765 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, 6)
+
+[node name="template-floor-detail-a8" parent="Tiles" unique_id=422296356 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, 2)
+
+[node name="template-floor-detail-a9" parent="Tiles" unique_id=98541491 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, -2)
+
+[node name="template-floor-detail-a10" parent="Tiles" unique_id=1218762612 instance=ExtResource("1_2tm7v")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, -6)
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1438854416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.158247, 0)
+mesh = SubResource("BoxMesh_ijv05")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Base" unique_id=411778679]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/StaticBody3D" unique_id=737784554]
+shape = SubResource("BoxShape3D_rl6s6")
