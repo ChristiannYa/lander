@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://2u8g4pfxuu5b"]
+
+[ext_resource type="PackedScene" uid="uid://0rdo2sj60ao3" path="res://assets/models/prototypes/Room.glb" id="1_g3pcw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pqc31"]
+sky_top_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+sky_horizon_color = Color(0.23789023, 0.23789023, 0.23789023, 1)
+ground_bottom_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+ground_horizon_color = Color(0.23789023, 0.23789023, 0.23789023, 1)
+
+[sub_resource type="Sky" id="Sky_0dhmt"]
+sky_material = SubResource("ProceduralSkyMaterial_pqc31")
+
+[sub_resource type="Environment" id="Environment_1gks2"]
+background_mode = 2
+sky = SubResource("Sky_0dhmt")
+glow_enabled = true
+
+[node name="LightTest" type="Node" unique_id=1723529375]
+
+[node name="Room" parent="." unique_id=61790753 instance=ExtResource("1_g3pcw")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2096361090]
+environment = SubResource("Environment_1gks2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1587747851]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+light_energy = 0.1
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=219122334]
+transform = Transform3D(-0.30317134, -0.48218465, 0.8219398, 0, 0.8625341, 0.50599897, -0.95293605, 0.15340438, -0.26149562, 10.931005, 7.243946, -3.052578)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=541746339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9569006, 4.7683716e-07, 1.1938214)
+light_color = Color(0.9599907, 0.8821927, 0.61839503, 1)
+omni_range = 6.0
+omni_attenuation = 1.615

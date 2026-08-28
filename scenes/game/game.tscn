@@ -22,8 +22,8 @@ glow_enabled = true
 environment = SubResource("Environment_5i0tg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825900394]
-transform = Transform3D(-0.8660254, 0.4667902, 0.17918396, 0, -0.35836795, 0.93358046, 0.49999997, 0.8085044, 0.31035575, 0, 0, 0)
-light_energy = 0.2
+transform = Transform3D(-0.8660253, 0.49240395, -0.0868241, 1.5180808e-08, 0.1736482, 0.9848077, 0.50000006, 0.85286844, -0.15038374, 0, 0, 0)
+light_energy = 0.1
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1527377390]
