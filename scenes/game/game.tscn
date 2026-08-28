@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://b1sotcgtvbqrx"]
 
 [ext_resource type="PackedScene" uid="uid://cjrx4xt0pxog3" path="res://scenes/rocket/rocket.tscn" id="1_7h61r"]
+[ext_resource type="Texture2D" uid="uid://dlrhy1tvqapmi" path="res://assets/images/background_image_5.png" id="1_kelw5"]
 [ext_resource type="PackedScene" uid="uid://58ud584hxi64" path="res://scenes/landing_pad/landing_pad.tscn" id="2_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://wudidg54pmpc" path="res://scenes/hud/hud.tscn" id="3_0sr1o"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kelw5"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0sr1o"]
+panorama = ExtResource("1_kelw5")
 
 [sub_resource type="Sky" id="Sky_lfrn8"]
-sky_material = SubResource("ProceduralSkyMaterial_kelw5")
+sky_material = SubResource("PanoramaSkyMaterial_0sr1o")
 
 [sub_resource type="Environment" id="Environment_5i0tg"]
 background_mode = 2
@@ -22,11 +22,12 @@ glow_enabled = true
 environment = SubResource("Environment_5i0tg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=825900394]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, 0.4667902, 0.17918396, 0, -0.35836795, 0.93358046, 0.49999997, 0.8085044, 0.31035575, 0, 0, 0)
+light_energy = 0.2
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1527377390]
-transform = Transform3D(-0.7755199, 0.2905139, -0.5605092, 0, 0.8878325, 0.46016675, 0.6313231, 0.35686848, -0.6885318, -9.481036, 8.341772, -11.231439)
+transform = Transform3D(-0.9999817, -0.00033843773, 0.0060450016, 0, 0.99843645, 0.05589884, -0.006054468, 0.055897817, -0.99841815, -0.22959352, 9.602182, -22.159323)
 
 [node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("landing_pad") instance=ExtResource("1_7h61r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.751322, 0)
