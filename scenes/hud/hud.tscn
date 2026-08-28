@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://wudidg54pmpc"]
+
+[ext_resource type="FontFile" uid="uid://yaflvm6nblk0" path="res://assets/fonts/Orbitron-ExtraBold.ttf" id="1_48c2t"]
+[ext_resource type="Script" uid="uid://51ogc7o8dhf3" path="res://scenes/hud/hud.gd" id="1_cgeww"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijv05"]
+font = ExtResource("1_48c2t")
+font_size = 18
+font_color = Color(0.15294118, 1, 0.16470589, 1)
+
+[node name="Hud" type="Control" unique_id=1816314128]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cgeww")
+
+[node name="MargCon" type="MarginContainer" parent="." unique_id=1535312610]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+
+[node name="Label" type="Label" parent="MargCon" unique_id=1657454386]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ijv05")

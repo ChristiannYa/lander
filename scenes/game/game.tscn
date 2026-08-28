@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cjrx4xt0pxog3" path="res://scenes/rocket/rocket.tscn" id="1_7h61r"]
 [ext_resource type="PackedScene" uid="uid://58ud584hxi64" path="res://scenes/landing_pad/landing_pad.tscn" id="2_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://wudidg54pmpc" path="res://scenes/hud/hud.tscn" id="3_0sr1o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kelw5"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,7 +28,10 @@ shadow_enabled = true
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1527377390]
 transform = Transform3D(-0.7755199, 0.2905139, -0.5605092, 0, 0.8878325, 0.46016675, 0.6313231, 0.35686848, -0.6885318, -9.481036, 8.341772, -11.231439)
 
-[node name="Rocket" parent="." unique_id=38822162 instance=ExtResource("1_7h61r")]
+[node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("landing_pad") instance=ExtResource("1_7h61r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.751322, 0)
+landing_pad = NodePath("../LandingPad")
 
 [node name="LandingPad" parent="." unique_id=1243908510 instance=ExtResource("2_0sr1o")]
+
+[node name="Hud" parent="." unique_id=1816314128 instance=ExtResource("3_0sr1o")]
