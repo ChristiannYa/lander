@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cjrx4xt0pxog3"]
 
+[ext_resource type="Script" uid="uid://befeo7j8nrd62" path="res://scenes/rocket/rocket.gd" id="1_ut1yo"]
 [ext_resource type="PackedScene" uid="uid://bfsl4ywgxc86f" path="res://assets/models/ship/monorail_trainFront.glb" id="1_v4nw0"]
 [ext_resource type="PackedScene" uid="uid://wbbstexgfoqt" path="res://assets/models/ship/rocket_baseA.glb" id="2_ut1yo"]
 [ext_resource type="PackedScene" uid="uid://dabktyucfkds3" path="res://assets/models/ship/rocket_fuelA.glb" id="3_wrqyj"]
@@ -13,6 +14,8 @@ radius = 0.75390625
 
 [node name="Rocket" type="RigidBody3D" unique_id=38822162]
 gravity_scale = 0.5
+angular_damp = 3.0
+script = ExtResource("1_ut1yo")
 
 [node name="Body" type="Node3D" parent="." unique_id=1633132656]
 
