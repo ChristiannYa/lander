@@ -6,13 +6,20 @@ extends RigidBody3D
 @onready var thrust_l: Thrust = $ThrustL
 @onready var thrust_r: Thrust = $ThrustR
 
-const THRUST_FORCE = 15.0
-const TORQUE_STRENGTH = 2.0
+const THRUST_CENT_FORCE := 15.0
+const THRUST_SIDE_FORCE := 3.0
+const TORQUE_STRENGTH := 2.0
 
 func _physics_process(delta: float):
 	var thrust_applied: bool = Input.is_action_pressed("thust")
 	if thrust_applied:
-		apply_central_force(global_transform.basis.y * THRUST_FORCE)
+		apply_central_force(global_transform.basis.y * THRUST_CENT_FORCE)
+
+	var thrust_l_applied: bool = Input.is_action_pressed("roll_left")
+	var thrust_r_applied: bool = Input.is_action_pressed("roll_right")
+
+	if thrust_l_applied: apply_side_thrust(thrust_l)
+	if thrust_r_applied: apply_side_thrust(thrust_r)
 
 	var pitch: float = Input.get_axis("pitch_down", "pitch_up")
 	var yaw: float = Input.get_axis("yaw_left", "yaw_right")
@@ -23,8 +30,12 @@ func _physics_process(delta: float):
 	emit_telemtry()
 
 	thrust.update_effects(thrust_applied, delta)
-	# thrust_l.update_visuals(thrust_applied, delta)
-	# thrust_r.update_visuals(thrust_applied, delta)
+	thrust_l.update_effects(thrust_l_applied, delta)
+	thrust_r.update_effects(thrust_r_applied, delta)
+
+func apply_side_thrust(thruster: Thrust):
+	var ofs: Vector3 = thruster.global_position - global_position
+	apply_force(global_transform.basis.y * THRUST_SIDE_FORCE, ofs)
 
 func emit_telemtry():
 	var tel := RocketTelemetry.new()
