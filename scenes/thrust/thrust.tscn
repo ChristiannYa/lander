@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ck5mvnxhj43v1"]
 
 [ext_resource type="Script" uid="uid://d3dog28dlv7gr" path="res://scenes/thrust/thrust.gd" id="1_06guw"]
+[ext_resource type="AudioStream" uid="uid://cqc4bxnsivjkd" path="res://assets/sounds/515122__lilmati__rocket-thrust-02.wav" id="2_lmlxt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt0vh"]
 albedo_color = Color(1, 0.67058825, 0.25882354, 1)
@@ -23,3 +24,7 @@ mesh = SubResource("CylinderMesh_ijv05")
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1062066262]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.64515126, -1.973624e-09)
 light_color = Color(2.3827941, 0.81513923, 0.3711213, 1)
+
+[node name="ThrustSound" type="AudioStreamPlayer3D" parent="." unique_id=942794210]
+stream = ExtResource("2_lmlxt")
+autoplay = true

@@ -22,9 +22,9 @@ func _physics_process(delta: float):
 
 	emit_telemtry()
 
-	thrust.update_visuals(thrust_applied, delta)
-	thrust_l.update_visuals(thrust_applied, delta)
-	thrust_r.update_visuals(thrust_applied, delta)
+	thrust.update_effects(thrust_applied, delta)
+	# thrust_l.update_visuals(thrust_applied, delta)
+	# thrust_r.update_visuals(thrust_applied, delta)
 
 func emit_telemtry():
 	var tel := RocketTelemetry.new()
