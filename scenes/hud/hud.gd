@@ -7,3 +7,6 @@ func _ready():
 		label.text = str(tel)
 	)
 
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel"): GameManager.load_main()
+

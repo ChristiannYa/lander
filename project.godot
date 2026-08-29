@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalHub="*uid://ddar01ptj68mh"
+GameManager="*uid://dyaww7eb7k383"
 
 [display]
 
