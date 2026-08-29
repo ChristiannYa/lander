@@ -16,7 +16,8 @@ func _ready():
 		music.stop()
 		match resl.outcome:
 			LandingResult.Outcome.LANDED: 
-				result_label.text = "LANDED"
+				result_label.text = "LANDED \nScore: %d" % resl.score
+				if resl.new_high_score: result_label.text += " NEW BEST"
 				land_sound.play(20.0)
 			LandingResult.Outcome.CRASHED: 
 				result_label.text = "CRASHED"

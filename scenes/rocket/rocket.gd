@@ -6,7 +6,6 @@ extends RigidBody3D
 @onready var thrust_l: Thrust = $ThrustL
 @onready var thrust_r: Thrust = $ThrustR
 @onready var timer: Timer = $Timer
-# @onready var crash_sound: AudioStreamPlayer = $Crash
 
 const THRUST_CENT_FORCE := 15.0
 const THRUST_SIDE_FORCE := 3.0
@@ -115,10 +114,12 @@ func calc_score() -> int:
 
 func game_over(outcome: LandingResult.Outcome):
 	set_physics_process(false)
+
 	var resl := LandingResult.new()
 	resl.outcome = outcome
-
 	if resl.outcome == LandingResult.Outcome.LANDED:
 		resl.score = calc_score()
+		resl.new_high_score = GameManager.submit_score(resl.score)
+		resl.high_score = GameManager.high_score
 
 	SignalHub.emit_game_over(resl)
