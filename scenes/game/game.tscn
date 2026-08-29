@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1sotcgtvbqrx"]
 
+[ext_resource type="Script" uid="uid://ckmeelio6mtol" path="res://scenes/game/game.gd" id="1_5i0tg"]
 [ext_resource type="PackedScene" uid="uid://cjrx4xt0pxog3" path="res://scenes/rocket/rocket.tscn" id="1_7h61r"]
 [ext_resource type="Texture2D" uid="uid://dlrhy1tvqapmi" path="res://assets/images/background_image_5.png" id="1_kelw5"]
 [ext_resource type="PackedScene" uid="uid://58ud584hxi64" path="res://scenes/landing_pad/landing_pad.tscn" id="2_0sr1o"]
@@ -18,6 +19,7 @@ sky = SubResource("Sky_lfrn8")
 glow_enabled = true
 
 [node name="Game" type="Node" unique_id=1698801876]
+script = ExtResource("1_5i0tg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=240282248]
 environment = SubResource("Environment_5i0tg")

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://d3njh0qn5hwso"]
+
+[ext_resource type="Script" uid="uid://dx8onfvuv8hf5" path="res://scenes/main/main.gd" id="1_6q06x"]
+[ext_resource type="Texture2D" uid="uid://dlrhy1tvqapmi" path="res://assets/images/background_image_5.png" id="1_hyk8p"]
+[ext_resource type="AudioStream" uid="uid://c4ag1wswat46j" path="res://assets/music/Off-World-Desolation.ogg" id="2_iuonh"]
+[ext_resource type="FontFile" uid="uid://yaflvm6nblk0" path="res://assets/fonts/Orbitron-ExtraBold.ttf" id="3_k2fmo"]
+[ext_resource type="FontFile" uid="uid://ci577jqsipt4u" path="res://assets/fonts/Orbitron-SemiBold.ttf" id="4_l3cfh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ijv05"]
+font = ExtResource("3_k2fmo")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2fmo"]
+font = ExtResource("4_l3cfh")
+font_size = 21
+
+[node name="Main" type="Control" unique_id=387192788]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6q06x")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=469200274]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hyk8p")
+expand_mode = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1346260000]
+stream = ExtResource("2_iuonh")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1308549174]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1141462305]
+layout_mode = 2
+text = "LANDER"
+label_settings = SubResource("LabelSettings_ijv05")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=510918308]
+layout_mode = 2
+text = "Press Enter To Play"
+label_settings = SubResource("LabelSettings_k2fmo")
+horizontal_alignment = 1
+vertical_alignment = 1
