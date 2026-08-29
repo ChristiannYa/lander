@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cjrx4xt0pxog3" path="res://scenes/rocket/rocket.tscn" id="1_7h61r"]
 [ext_resource type="Texture2D" uid="uid://dlrhy1tvqapmi" path="res://assets/images/background_image_5.png" id="1_kelw5"]
 [ext_resource type="PackedScene" uid="uid://58ud584hxi64" path="res://scenes/landing_pad/landing_pad.tscn" id="2_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://ck0bxttbd02wb" path="res://scenes/rocket_cam/rocket_cam.tscn" id="2_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://wudidg54pmpc" path="res://scenes/hud/hud.tscn" id="3_0sr1o"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0sr1o"]
@@ -26,8 +27,9 @@ transform = Transform3D(-0.8660253, 0.49240395, -0.0868241, 1.5180808e-08, 0.173
 light_energy = 0.1
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1527377390]
-transform = Transform3D(-0.9999817, -0.00033843773, 0.0060450016, 0, 0.99843645, 0.05589884, -0.006054468, 0.055897817, -0.99841815, -0.22959352, 9.602182, -22.159323)
+[node name="RocketCam" parent="." unique_id=787684630 node_paths=PackedStringArray("rocket") instance=ExtResource("2_lfrn8")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+rocket = NodePath("../Rocket")
 
 [node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("landing_pad") instance=ExtResource("1_7h61r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.751322, 0)

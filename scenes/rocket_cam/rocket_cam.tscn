@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ck0bxttbd02wb"]
+
+[ext_resource type="Script" uid="uid://crnv1se0h6c0" path="res://scenes/rocket_cam/rocket_cam.gd" id="1_8uyfb"]
+
+[node name="RocketCam" type="Camera3D" unique_id=787684630]
+script = ExtResource("1_8uyfb")
