@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://58ud584hxi64" path="res://scenes/landing_pad/landing_pad.tscn" id="2_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://ck0bxttbd02wb" path="res://scenes/rocket_cam/rocket_cam.tscn" id="2_lfrn8"]
 [ext_resource type="PackedScene" uid="uid://wudidg54pmpc" path="res://scenes/hud/hud.tscn" id="3_0sr1o"]
+[ext_resource type="PackedScene" uid="uid://dlud25m4ywwus" path="res://scenes/wind/wind.tscn" id="6_5i0tg"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0sr1o"]
 panorama = ExtResource("1_kelw5")
@@ -32,10 +33,14 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 rocket = NodePath("../Rocket")
 landing_pad = NodePath("../LandingPad")
 
-[node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("landing_pad") instance=ExtResource("1_7h61r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014228821, 28.416498, -0.40911674)
+[node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("wind", "landing_pad") instance=ExtResource("1_7h61r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0)
+wind = NodePath("../Wind")
 landing_pad = NodePath("../LandingPad")
 
 [node name="LandingPad" parent="." unique_id=1243908510 instance=ExtResource("2_0sr1o")]
 
 [node name="Hud" parent="." unique_id=1816314128 instance=ExtResource("3_0sr1o")]
+
+[node name="Wind" parent="." unique_id=2104386727 instance=ExtResource("6_5i0tg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -11.5)

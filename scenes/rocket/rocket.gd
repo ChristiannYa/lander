@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+@export var wind: Wind
 @export var landing_pad: Node3D
 
 @onready var thrust: Thrust = $Thrust
@@ -12,7 +13,7 @@ const THRUST_SIDE_FORCE := 3.0
 const TORQUE_STRENGTH := 2.0
 const MAX_LANDING_SPEED := 6.0
 const MAX_LANDING_TITLT := 10.0
-const MAX_FUEL := 8.0
+const MAX_FUEL := 30.0
 const MAX_DISTANCE := 6.0
 const FUEL_DROP := 50.0
 
@@ -22,6 +23,9 @@ var _out_of_fuel := false
 var _fuel_out_y := 0.0
 
 func _physics_process(delta: float):
+	if wind and get_contact_count() == 0: 
+		apply_central_force(wind.wind_force)
+
 	if !_out_of_fuel:
 		apply_main_thrust(delta)
 		apply_side_thrusters(delta)
