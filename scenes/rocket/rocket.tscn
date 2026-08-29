@@ -10,11 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://ck5mvnxhj43v1" path="res://scenes/thrust/thrust.tscn" id="8_wrqyj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ijv05"]
-height = 3.4069824
-radius = 0.75390625
+height = 3.0072632
+radius = 0.5805664
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijv05"]
+size = Vector3(1.5, 0.2, 0.2)
 
 [node name="Rocket" type="RigidBody3D" unique_id=38822162]
 gravity_scale = 0.5
+contact_monitor = true
+max_contacts_reported = 1
 angular_damp = 3.0
 script = ExtResource("1_ut1yo")
 
@@ -39,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.5, -1.5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3.1977003, -1.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=465203968]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7132022, 0.008268833)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.008)
 shape = SubResource("CylinderShape3D_ijv05")
 
 [node name="Thrust" parent="." unique_id=1658840384 instance=ExtResource("8_wrqyj")]
@@ -50,3 +55,15 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.7, 0.1, 0)
 
 [node name="ThrustR" parent="." unique_id=93737171 instance=ExtResource("8_wrqyj")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.7, 0.1, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=947499007]
+wait_time = 3.0
+one_shot = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1327260861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_ijv05")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -33,7 +33,7 @@ rocket = NodePath("../Rocket")
 landing_pad = NodePath("../LandingPad")
 
 [node name="Rocket" parent="." unique_id=38822162 node_paths=PackedStringArray("landing_pad") instance=ExtResource("1_7h61r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.887932, 28.416498, 26.252647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014228821, 28.416498, -0.40911674)
 landing_pad = NodePath("../LandingPad")
 
 [node name="LandingPad" parent="." unique_id=1243908510 instance=ExtResource("2_0sr1o")]
