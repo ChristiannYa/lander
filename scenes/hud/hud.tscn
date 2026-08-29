@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://eif0isjqob5n" path="res://assets/music/Engineering-Stars.ogg" id="4_n56i7"]
 [ext_resource type="AudioStream" uid="uid://c4ag1wswat46j" path="res://assets/music/Off-World-Desolation.ogg" id="5_mq0y1"]
 [ext_resource type="AudioStream" uid="uid://didumpwhe5kcw" path="res://assets/music/Cyber-City-Fever-Dream.ogg" id="6_go0ap"]
+[ext_resource type="AudioStream" uid="uid://dqkaxeg7nq2yk" path="res://assets/sounds/592388__magnuswaker__car-crash-with-glass.wav" id="7_mq0y1"]
+[ext_resource type="AudioStream" uid="uid://cvs05m5m1lu27" path="res://assets/sounds/381679__hybrid_v__starship-landing-sequence.wav" id="8_go0ap"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ijv05"]
 font = ExtResource("1_48c2t")
@@ -60,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.10980392, 0.10980392, 0.10980392, 0.7058824)
 
-[node name="Label" type="Label" parent="GameOverRect" unique_id=1246222365]
+[node name="ResultLabel" type="Label" parent="GameOverRect" unique_id=1246222365]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,5 +82,11 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="." unique_id=1224698813]
 one_shot = true
+
+[node name="CrashSound" type="AudioStreamPlayer" parent="." unique_id=572253259]
+stream = ExtResource("7_mq0y1")
+
+[node name="LandSound" type="AudioStreamPlayer" parent="." unique_id=1818299093]
+stream = ExtResource("8_go0ap")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

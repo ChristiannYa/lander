@@ -6,13 +6,14 @@ extends RigidBody3D
 @onready var thrust_l: Thrust = $ThrustL
 @onready var thrust_r: Thrust = $ThrustR
 @onready var timer: Timer = $Timer
+# @onready var crash_sound: AudioStreamPlayer = $Crash
 
 const THRUST_CENT_FORCE := 15.0
 const THRUST_SIDE_FORCE := 3.0
 const TORQUE_STRENGTH := 2.0
 const MAX_LANDING_SPEED := 6.0
 const MAX_LANDING_TITLT := 10.0
-const MAX_FUEL := 2.0
+const MAX_FUEL := 8.0
 const FUEL_DROP := 50.0
 
 var _last_speed := 0.0
@@ -72,7 +73,7 @@ func check_fuel():
 
 	if _out_of_fuel and global_position.y < _fuel_out_y - FUEL_DROP:
 		print("Lost in space...")
-		game_over()
+		game_over(LandingResult.Outcome.LOST)
 		freeze = true
 
 func emit_telemtry():
@@ -90,24 +91,25 @@ func emit_telemtry():
 	SignalHub.emit_telemetry_updated(tel)
 
 # Requires `RigidBody3D > Contact Monitor=on` along with `.max_contacts_reported=1`
-func _on_body_entered(body: Node):
+func _on_body_entered(_body: Node):
 	if _last_speed > MAX_LANDING_SPEED:
 		print("CRASHED")
 		timer.start()
-		game_over()
+		game_over(LandingResult.Outcome.CRASHED)
 
 func _on_sleeping_state_changed():
 	if sleeping:
 		if is_physics_processing():
 			if get_tilt() < MAX_LANDING_TITLT:
-				print("LANDED")
+				game_over(LandingResult.Outcome.LANDED)
 			else: 
-				print("CRASHED")
-			game_over()
+				game_over(LandingResult.Outcome.CRASHED)
 
 func _on_timer_timeout() -> void:
 	freeze = true
 
-func game_over():
+func game_over(outcome: LandingResult.Outcome):
 	set_physics_process(false)
-	SignalHub.emit_game_over()
+	var resl := LandingResult.new()
+	resl.outcome = outcome
+	SignalHub.emit_game_over(resl)

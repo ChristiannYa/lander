@@ -3,13 +3,28 @@ extends Control
 @onready var label: Label = $MargCon/Label
 @onready var game_over_rect: ColorRect = $GameOverRect
 @onready var timer: Timer = $Timer
+@onready var result_label: Label = $GameOverRect/ResultLabel
+@onready var music: AudioStreamPlayer = $Music
+@onready var crash_sound: AudioStreamPlayer = $CrashSound
+@onready var land_sound: AudioStreamPlayer = $LandSound
 
 func _ready():
-	SignalHub.telemetry_updated.connect(func(tel):
+	SignalHub.telemetry_updated.connect(func(tel: RocketTelemetry):
 		label.text = str(tel)
 	)
-	SignalHub.game_over.connect(func():
-		if !game_over_rect or !timer: return 
+	SignalHub.game_over.connect(func(resl: LandingResult):
+		music.stop()
+		match resl.outcome:
+			LandingResult.Outcome.LANDED: 
+				result_label.text = "LANDED"
+				land_sound.play(20.0)
+			LandingResult.Outcome.CRASHED: 
+				result_label.text = "CRASHED"
+				crash_sound.play()
+			LandingResult.Outcome.LOST: 
+				result_label.text = "LOST"
+				crash_sound.play()
+
 		game_over_rect.show()
 		timer.start()
 	)
