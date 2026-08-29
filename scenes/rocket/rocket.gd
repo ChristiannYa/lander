@@ -72,7 +72,7 @@ func check_fuel():
 
 	if _out_of_fuel and global_position.y < _fuel_out_y - FUEL_DROP:
 		print("Lost in space...")
-		set_physics_process(false)
+		game_over()
 		freeze = true
 
 func emit_telemtry():
@@ -92,8 +92,9 @@ func emit_telemtry():
 # Requires `RigidBody3D > Contact Monitor=on` along with `.max_contacts_reported=1`
 func _on_body_entered(body: Node):
 	if _last_speed > MAX_LANDING_SPEED:
+		print("CRASHED")
 		timer.start()
-		set_physics_process(false)
+		game_over()
 
 func _on_sleeping_state_changed():
 	if sleeping:
@@ -102,7 +103,11 @@ func _on_sleeping_state_changed():
 				print("LANDED")
 			else: 
 				print("CRASHED")
-			set_physics_process(false)
+			game_over()
 
 func _on_timer_timeout() -> void:
 	freeze = true
+
+func game_over():
+	set_physics_process(false)
+	SignalHub.emit_game_over()

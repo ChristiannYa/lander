@@ -19,7 +19,13 @@ stream_1/stream = ExtResource("4_n56i7")
 stream_2/stream = ExtResource("5_mq0y1")
 stream_3/stream = ExtResource("6_go0ap")
 
+[sub_resource type="LabelSettings" id="LabelSettings_v7mo4"]
+font = ExtResource("1_48c2t")
+font_size = 72
+font_color = Color(0.15294118, 1, 0.16470589, 1)
+
 [node name="Hud" type="Control" unique_id=1816314128]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,3 +49,36 @@ label_settings = SubResource("LabelSettings_ijv05")
 stream = SubResource("AudioStreamRandomizer_ijv05")
 volume_db = -5.0
 autoplay = true
+
+[node name="GameOverRect" type="ColorRect" parent="." unique_id=486227852]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.10980392, 0.10980392, 0.10980392, 0.7058824)
+
+[node name="Label" type="Label" parent="GameOverRect" unique_id=1246222365]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.5
+offset_top = -45.5
+offset_right = 175.5
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_v7mo4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1224698813]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
