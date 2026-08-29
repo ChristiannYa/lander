@@ -54,3 +54,7 @@ func _update_thrust_sound(thrust_on: bool, delta: float):
 	thrust_sound.volume_db = lerpf(thrust_sound.volume_db, target_volume, SOUND_LERP * delta)
 	thrust_sound.pitch_scale = lerpf(thrust_sound.pitch_scale, target_pitch, SOUND_LERP * delta)
 
+func shut_down():
+	thrust_sound.stop()
+	spot_light_3d.visible = false
+	cone.scale = CONE_SCALE_IDLE * Vector3.ONE
