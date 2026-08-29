@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://ck5mvnxhj43v1"]
 
+[ext_resource type="Script" uid="uid://d3dog28dlv7gr" path="res://scenes/thrust/thrust.gd" id="1_06guw"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt0vh"]
 albedo_color = Color(1, 0.67058825, 0.25882354, 1)
 emission_enabled = true
@@ -13,16 +15,11 @@ bottom_radius = 0.4
 height = 1.0
 
 [node name="Thrust" type="Node3D" unique_id=1658840384]
+script = ExtResource("1_06guw")
 
 [node name="Cone" type="MeshInstance3D" parent="." unique_id=1813543810]
 mesh = SubResource("CylinderMesh_ijv05")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=59104743]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.35084385, 1.0890962e-08)
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1062066262]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.64515126, -1.973624e-09)
 light_color = Color(2.3827941, 0.81513923, 0.3711213, 1)
-light_energy = 5.0
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=1062066262]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.8286029, -9.992551e-09)
-light_color = Color(2.3827941, 0.81513923, 0.3711213, 1)
-light_energy = 5.0

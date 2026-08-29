@@ -2,11 +2,16 @@ extends RigidBody3D
 
 @export var landing_pad: Node3D
 
+@onready var thrust: Thrust = $Thrust
+@onready var thrust_l: Thrust = $ThrustL
+@onready var thrust_r: Thrust = $ThrustR
+
 const THRUST_FORCE = 15.0
 const TORQUE_STRENGTH = 2.0
 
-func _physics_process(_delta: float):
-	if Input.is_action_pressed("thust"):
+func _physics_process(delta: float):
+	var thrust_applied: bool = Input.is_action_pressed("thust")
+	if thrust_applied:
 		apply_central_force(global_transform.basis.y * THRUST_FORCE)
 
 	var pitch: float = Input.get_axis("pitch_down", "pitch_up")
@@ -16,6 +21,10 @@ func _physics_process(_delta: float):
 	apply_torque(torque)
 
 	emit_telemtry()
+
+	thrust.update_visuals(thrust_applied, delta)
+	thrust_l.update_visuals(thrust_applied, delta)
+	thrust_r.update_visuals(thrust_applied, delta)
 
 func emit_telemtry():
 	var tel := RocketTelemetry.new()
