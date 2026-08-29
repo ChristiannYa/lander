@@ -14,6 +14,7 @@ const TORQUE_STRENGTH := 2.0
 const MAX_LANDING_SPEED := 6.0
 const MAX_LANDING_TITLT := 10.0
 const MAX_FUEL := 8.0
+const MAX_DISTANCE := 6.0
 const FUEL_DROP := 50.0
 
 var _last_speed := 0.0
@@ -72,7 +73,6 @@ func check_fuel():
 		thrust_r.shut_down()
 
 	if _out_of_fuel and global_position.y < _fuel_out_y - FUEL_DROP:
-		print("Lost in space...")
 		game_over(LandingResult.Outcome.LOST)
 		freeze = true
 
@@ -93,7 +93,6 @@ func emit_telemtry():
 # Requires `RigidBody3D > Contact Monitor=on` along with `.max_contacts_reported=1`
 func _on_body_entered(_body: Node):
 	if _last_speed > MAX_LANDING_SPEED:
-		print("CRASHED")
 		timer.start()
 		game_over(LandingResult.Outcome.CRASHED)
 
@@ -108,8 +107,18 @@ func _on_sleeping_state_changed():
 func _on_timer_timeout() -> void:
 	freeze = true
 
+func calc_score() -> int:
+	var fuel_score := int((_fuel / MAX_FUEL) * 1000.0)
+	var dist: float = global_position.distance_to(landing_pad.global_position)
+	var dist_score := int(clampf(1.0 - dist / MAX_DISTANCE, 0.0, 1.0) * 1000)
+	return fuel_score + dist_score
+
 func game_over(outcome: LandingResult.Outcome):
 	set_physics_process(false)
 	var resl := LandingResult.new()
 	resl.outcome = outcome
+
+	if resl.outcome == LandingResult.Outcome.LANDED:
+		resl.score = calc_score()
+
 	SignalHub.emit_game_over(resl)
